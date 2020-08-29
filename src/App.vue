@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>hello world</h1>
+    <Test></Test>
+    <!-- <Debounce></Debounce> -->
+    <Throttle></Throttle>
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+/* eslint-disable vue/no-unused-components */
 
+// import HelloWorld from './components/HelloWorld.vue'
+import Test from './components/test'
+import Debounce from './components/debounce'
+import Throttle from './components/throttle'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
+    Test,
+    Debounce,
+    Throttle
   }
 }
 </script>

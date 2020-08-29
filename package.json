@@ -1,18 +1,33 @@
 {
-  "name": "unit",
+  "name": "throttle-debounce-directive",
   "version": "0.1.0",
-  "private": true,
+  "description": "throttle and debounce directive of Vue ",
+  "module": "dist/index.esm.js",
+  "main": "dist/index.cjs.js",
+  "browser": "dist/index.umd.js",
+  "keywords": [
+    "throttle",
+    "debounce"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaopingbuxiao/throttle-debounce-directive"
+  },
+  "author": "xiaopingbuxiao<1210774823@qq.com>",
+  "license": "MIT",
   "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test:debugger": "node node_modules/.bin/vue-cli-service test:unit  --watch"
   },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@rollup/plugin-babel": "^5.2.0",
     "@vue/cli-plugin-babel": "^4.5.0",
     "@vue/cli-plugin-eslint": "^4.5.0",
     "@vue/cli-plugin-unit-mocha": "^4.5.0",
@@ -20,8 +35,15 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "chai": "^4.1.2",
+    "core-js": "^3.6.5",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "rollup": "^2.26.8",
+    "sinon": "^9.0.3",
+    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
