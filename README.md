@@ -1,5 +1,7 @@
 # throttle-debounce-directive
 
+[![Build Status](https://www.travis-ci.org/xiaopingbuxiao/throttle-debounce-directive.svg?branch=master)](https://www.travis-ci.org/xiaopingbuxiao/throttle-debounce-directive)
+
 throttle and debounce directive of Vue 
 
 ## install 
