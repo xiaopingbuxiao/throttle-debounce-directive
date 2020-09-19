@@ -172,6 +172,68 @@ describe('测试 v-debounce ', () => {
     expect(wrapper.vm.count).to.equal(1)
   });
 
+  /*  */
+  it('key不规范时导致的bug', (done) => {
+    const data = [
+      {
+        id: 1,
+        date: "2016-05-02",
+        name: "王小虎11",
+        address: "上海市普陀区金沙江路 1518 弄",
+      },
+      {
+        id: 2,
+        date: "2016-05-04",
+        name: "王小虎22",
+        address: "上海市普陀区金沙江路 1517 弄",
+      },
+      {
+        id: 3,
+        date: "2016-05-01",
+        name: "王小虎33",
+        address: "上海市普陀区金沙江路 1519 弄",
+      },
+    ];
+    const wrapper = mount({
+      template: `<div>
+        <button @click="getData">切换数据</button>
+        <ul>
+          <li v-for="(item,index) in tableData" v-debounce.immediate="()=>fn(item)" :key="item.id" >你好世界 {{item.name}}</li>
+        </ul>
+      </div>`,
+      data() {
+        return {
+          tableData: [
+            {
+              id: 1,
+              date: "2016-05-02",
+              name: "王小虎11",
+              address: "上海市普陀区金沙江路 1518 弄",
+            },
+          ],
+          count: 0,
+          name: '王小虎11'
+        }
+      },
+      methods: {
+        fn(row) {
+          this.name = row.name
+        },
+        getData() {
+          const current = ++this.count % 3;
+          this.tableData = data.slice(current, current + 1);
+        },
+      },
+    })
+    expect(wrapper.vm.count).to.equal(0)
+    wrapper.find('button').trigger('click')
+    Vue.nextTick(() => {
+      expect(wrapper.find('li').html()).to.have.string('王小虎22')
+      wrapper.find('li').trigger('click')
+      expect(wrapper.vm.name).to.equal('王小虎22')
+      done()
+    })
+  });
 })
 
 
